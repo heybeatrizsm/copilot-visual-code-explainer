@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copilot Visual Code Explainer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <span class="brand-text">Copilot Visual Code Explainer</span>
+            </div>
+            <div class="navbar-right">
+                <div class="language-selector">
+                    <button id="languageBtn" class="language-btn" aria-label="Change language">
+                        <span id="langDisplay">EN</span>
+                        <span class="chevron">▾</span>
+                    </button>
+                    <div id="languageMenu" class="language-menu hidden">
+                        <button class="language-option" data-lang="en">English</button>
+                        <button class="language-option" data-lang="es">Español</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Initial State: Code Input Section -->
+        <div id="initialSection" class="initial-section">
+            <div class="initial-content">
+                <h1 id="mainTitle" class="main-title">Enter Your Code</h1>
+                <div class="input-wrapper">
+                    <textarea 
+                        id="codeInput" 
+                        class="code-textarea" 
+                        placeholder="Paste HTML, CSS, JavaScript, JSON or API code below"
+                        spellcheck="false"
+                    ></textarea>
+                </div>
+                <button id="explainBtn" class="explain-btn">Explain Code</button>
+            </div>
+        </div>
+
+        <!-- Results Section (Hidden Initially) -->
+        <div id="resultsSection" class="results-section hidden">
+            <!-- Compact Top Bar -->
+            <div class="results-top-bar">
+                <div class="results-input-wrapper">
+                    <textarea 
+                        id="codeInputTop" 
+                        class="code-textarea-compact" 
+                        placeholder="Paste HTML, CSS, JavaScript, JSON or API code below"
+                        spellcheck="false"
+                    ></textarea>
+                </div>
+                <button id="explainBtnTop" class="explain-btn-compact">Explain</button>
+            </div>
+
+            <!-- Main Results Container -->
+            <div class="results-container">
+                <!-- Left Column -->
+                <div class="results-column left-column">
+                    <!-- The Code Section -->
+                    <div class="result-box">
+                        <h2 class="result-title" id="codeTitle">The Code</h2>
+                        <div class="code-display">
+                            <pre id="displayCode"><code></code></pre>
+                        </div>
+                    </div>
+
+                    <!-- Function Section -->
+                    <div class="result-box">
+                        <h2 class="result-title" id="functionTitle">Function</h2>
+                        <p id="functionContent" class="result-text"></p>
+                    </div>
+
+                    <!-- What Happened Section -->
+                    <div class="result-box">
+                        <h2 class="result-title" id="whatHappenedTitle">What Happened</h2>
+                        <p id="whatHappenedContent" class="result-text"></p>
+                    </div>
+
+                    <!-- Tips Section -->
+                    <div class="result-box">
+                        <h2 class="result-title" id="tipsTitle">Tips</h2>
+                        <ul id="tipsList" class="tips-list"></ul>
+                    </div>
+                </div>
+
+                <!-- Right Column -->
+                <div class="results-column right-column">
+                    <!-- Try it Yourself Section -->
+                    <div class="result-box">
+                        <h2 class="result-title" id="tryItTitle">Try it Yourself</h2>
+                        <div class="code-editor">
+                            <textarea 
+                                id="editableCode" 
+                                class="editable-code" 
+                                placeholder="Edit code here..."
+                                spellcheck="false"
+                            ></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Visual Result Section -->
+                    <div class="result-box">
+                        <h2 class="result-title" id="visualResultTitle">Visual Result</h2>
+                        <div class="visual-result-container">
+                            <iframe 
+                                id="visualResult" 
+                                class="visual-result-iframe" 
+                                sandbox="allow-same-origin"
+                                title="Visual Result Preview"
+                            ></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Indicator -->
+    <div id="loadingIndicator" class="loading-indicator hidden">
+        <div class="spinner"></div>
+        <p id="loadingText">Analyzing your code...</p>
+    </div>
+
+    <!-- Error Modal -->
+    <div id="errorModal" class="error-modal hidden">
+        <div class="error-content">
+            <h3 id="errorTitle">Error</h3>
+            <p id="errorMessage"></p>
+            <button class="error-close-btn" onclick="document.getElementById('errorModal').classList.add('hidden')">Close</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

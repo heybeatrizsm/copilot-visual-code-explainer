@@ -36,10 +36,6 @@ const translations = {
         
         // Generic explanations
         noCodeDetected: 'No recognized code patterns were detected.',
-        
-        // Visual result messages
-        noVisualOutput: 'This code does not produce a visual output on the page. It stores a value in memory but doesn\'t change what appears on screen. To see a visual result, you could use this variable with DOM methods like innerHTML or textContent to display it on the page.',
-        noVisualOutput2: 'This JavaScript code creates logic but does not automatically display anything on the page. To see visual results, you would need to combine it with HTML elements and use methods like innerHTML, textContent, or style modifications.'
     },
     es: {
         // Navegación
@@ -69,10 +65,6 @@ const translations = {
         
         // Generic explanations
         noCodeDetected: 'No se detectaron patrones de código reconocidos.',
-        
-        // Visual result messages
-        noVisualOutput: 'Este código no produce una salida visual en la página. Almacena un valor en la memoria pero no cambia lo que aparece en la pantalla. Para ver un resultado visual, podrías usar esta variable con métodos DOM como innerHTML o textContent para mostrarla en la página.',
-        noVisualOutput2: 'Este código JavaScript crea lógica pero no muestra nada automáticamente en la página. Para ver resultados visuales, necesitarías combinarlo con elementos HTML y usar métodos como innerHTML, textContent o modificaciones de estilo.'
     }
 };
 
@@ -89,10 +81,13 @@ const explanations = {
                 'You can use color names (red, blue), hex codes (#FF5733), or RGB values (rgb(255, 87, 51)).',
                 'The background-color property is inherited by child elements unless overridden.'
             ],
-            tryItExample: `body {
-    background-color: yellow;
+            tryItExample: `div {
+    background-color: #3498db;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
 }`,
-            hasVisualOutput: true
+            tryItHtml: '<div style="background-color: #3498db; color: white; padding: 20px; border-radius: 8px;">Hello World!</div>'
         },
         cssColor: {
             function: 'The color property in CSS sets the text color of an element. It applies to all text content within the element and its children unless overridden. This is one of the most commonly used CSS properties for styling text.',
@@ -103,14 +98,11 @@ const explanations = {
                 'The color property is inherited by child elements.',
                 'Use color to highlight important text or create visual hierarchy.'
             ],
-            tryItExample: `body {
+            tryItExample: `p {
     color: #e74c3c;
-}
-
-p {
     font-size: 16px;
 }`,
-            hasVisualOutput: true
+            tryItHtml: '<p style="color: #e74c3c; font-size: 16px;">This text is red!</p>'
         },
         cssFontSize: {
             function: 'The font-size property in CSS controls the size of text. It can be specified in pixels (px), em units (em), percentages (%), or other CSS units. This property is essential for creating readable and visually appealing text.',
@@ -125,7 +117,7 @@ p {
     font-size: 32px;
     font-weight: bold;
 }`,
-            hasVisualOutput: true
+            tryItHtml: '<h1 style="font-size: 32px; font-weight: bold;">This is a large heading</h1>'
         },
         cssTextWrap: {
             function: 'The text-wrap property in CSS controls how text wraps within its container. It determines whether text should break to the next line or be kept on a single line. This is useful for controlling the layout of long text content.',
@@ -142,7 +134,7 @@ p {
     border: 1px solid #ccc;
     padding: 10px;
 }`,
-            hasVisualOutput: true
+            tryItHtml: '<p style="text-wrap: wrap; width: 300px; border: 1px solid #ccc; padding: 10px;">This is a long line of text that will wrap within the container to multiple lines as needed.</p>'
         },
         cssPadding: {
             function: 'The padding property in CSS creates space inside an element, between the content and the border. It adds internal spacing to push content away from the edges of the element.',
@@ -159,7 +151,7 @@ p {
     border: 1px solid #3498db;
     border-radius: 8px;
 }`,
-            hasVisualOutput: true
+            tryItHtml: '<div style="padding: 20px; background-color: #e8f4f8; border: 1px solid #3498db; border-radius: 8px;">This content has padding inside the box</div>'
         },
         cssMargin: {
             function: 'The margin property in CSS creates space outside an element, around its border. It adds external spacing between the element and other elements or the page edge.',
@@ -167,7 +159,7 @@ p {
             tips: [
                 'margin: 10px - All sides get 10px margin.',
                 'margin: 10px 20px - Top/bottom 10px, left/right 20px.',
-                'margin: 10px 20px 15px 5px - Top, right, bottom, left.',
+                'margin: auto - Centers the element horizontally.',
                 'Margin can be negative to overlap elements.'
             ],
             tryItExample: `div {
@@ -176,7 +168,7 @@ p {
     background-color: #f0f0f0;
     border: 2px solid #333;
 }`,
-            hasVisualOutput: true
+            tryItHtml: '<div style="margin: 20px; padding: 20px; background-color: #f0f0f0; border: 2px solid #333;">This box has external spacing (margin)</div>'
         },
         cssDisplay: {
             function: 'The display property in CSS controls how an element is rendered on the page. Common values are block, inline, inline-block, flex, grid, and none. This is one of the most important CSS properties.',
@@ -197,7 +189,7 @@ p {
     background-color: #3498db;
     color: white;
 }`,
-            hasVisualOutput: true
+            tryItHtml: '<div style="display: flex; justify-content: center; align-items: center; height: 200px; background-color: #3498db; color: white;">Centered content using flexbox</div>'
         },
         cssBorderRadius: {
             function: 'The border-radius property in CSS rounds the corners of an element\'s border. It can create slightly rounded corners or fully circular shapes depending on the values used.',
@@ -215,7 +207,7 @@ p {
     color: white;
     text-align: center;
 }`,
-            hasVisualOutput: true
+            tryItHtml: '<div style="border-radius: 12px; padding: 20px; background-color: #9b59b6; color: white; text-align: center;">This box has rounded corners</div>'
         },
         cssOpacity: {
             function: 'The opacity property in CSS controls the transparency of an element. Values range from 0 (completely transparent/invisible) to 1 (completely opaque/visible).',
@@ -232,7 +224,7 @@ p {
     background-color: #e74c3c;
     color: white;
 }`,
-            hasVisualOutput: true
+            tryItHtml: '<div style="opacity: 0.7; padding: 20px; background-color: #e74c3c; color: white;">This element is 70% opaque (30% transparent)</div>'
         },
         cssWidth: {
             function: 'The width property in CSS sets the width of an element. It can be specified in pixels (px), percentages (%), em units, or other CSS units.',
@@ -250,7 +242,7 @@ p {
     color: white;
     margin: 0 auto;
 }`,
-            hasVisualOutput: true
+            tryItHtml: '<div style="width: 80%; padding: 20px; background-color: #2ecc71; color: white; margin: 0 auto;">This element is 80% of the container width</div>'
         },
         cssHeight: {
             function: 'The height property in CSS sets the height of an element. It can be specified in pixels (px), percentages (%), em units, or other CSS units.',
@@ -269,7 +261,7 @@ p {
     display: flex;
     align-items: center;
 }`,
-            hasVisualOutput: true
+            tryItHtml: '<div style="height: 150px; padding: 20px; background-color: #f39c12; color: white; display: flex; align-items: center;">This element has a fixed height</div>'
         },
 
         // ===== HTML ELEMENTS =====
@@ -283,8 +275,8 @@ p {
                 'Make sure buttons are easily clickable on mobile devices.',
                 'Use aria-label for accessibility if the button text is unclear.'
             ],
-            tryItExample: `<button>Click Me</button>`,
-            hasVisualOutput: true
+            tryItExample: `<button onclick="alert('Button clicked!')">Click Me</button>`,
+            tryItHtml: '<button style="padding: 10px 20px; background-color: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;" onclick="alert(\'Button clicked!\')">Click Me</button>'
         },
         htmlDiv: {
             function: 'The <div> element is a container used to group other HTML elements. It has no special semantic meaning and is used for layout and styling purposes. Divs are one of the most commonly used elements in web development.',
@@ -298,7 +290,7 @@ p {
             tryItExample: `<div style="background-color: #ecf0f1; padding: 20px; border-radius: 8px;">
     <p>This is content inside a div</p>
 </div>`,
-            hasVisualOutput: true
+            tryItHtml: '<div style="background-color: #ecf0f1; padding: 20px; border-radius: 8px;"><p>This is content inside a div</p></div>'
         },
         htmlParagraph: {
             function: 'The <p> element defines a paragraph of text. It is used to group related sentences and is one of the most basic HTML elements. Browsers automatically add margin around paragraphs.',
@@ -310,7 +302,7 @@ p {
                 'Style paragraphs with CSS for consistent text appearance.'
             ],
             tryItExample: `<p>This is a paragraph of text. It contains related information and is displayed as a block element with spacing above and below.</p>`,
-            hasVisualOutput: true
+            tryItHtml: '<p style="font-size: 16px; line-height: 1.6;">This is a paragraph of text. It contains related information and is displayed as a block element with spacing above and below.</p>'
         },
         htmlHeading: {
             function: 'HTML heading elements (<h1> through <h6>) are used to define headings and subheadings on a page. <h1> is the largest and most important, while <h6> is the smallest. Headings help structure content and improve accessibility.',
@@ -324,7 +316,7 @@ p {
             tryItExample: `<h1>Main Heading</h1>
 <h2>Subheading</h2>
 <h3>Sub-subheading</h3>`,
-            hasVisualOutput: true
+            tryItHtml: '<div><h1 style="font-size: 28px; margin: 10px 0;">Main Heading</h1><h2 style="font-size: 22px; margin: 10px 0;">Subheading</h2><h3 style="font-size: 18px; margin: 10px 0;">Sub-subheading</h3></div>'
         },
 
         // ===== JAVASCRIPT BASICS =====
@@ -342,7 +334,7 @@ p {
 button.addEventListener('click', function() {
     alert('You clicked the button!');
 });`,
-            hasVisualOutput: false
+            tryItHtml: '<button style="padding: 10px 20px; background-color: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer;" onclick="alert(\'You clicked the button!\')">Click me to see the event!</button>'
         },
         jsQuerySelector: {
             function: 'document.querySelector() is a JavaScript method that finds and returns the first element in the DOM that matches a specified CSS selector. This is a powerful way to select elements from your HTML page.',
@@ -356,7 +348,7 @@ button.addEventListener('click', function() {
             ],
             tryItExample: `const heading = document.querySelector('h1');
 heading.textContent = 'New heading text';`,
-            hasVisualOutput: false
+            tryItHtml: '<h1 id="demo">Original text</h1><script>document.querySelector("h1").textContent = "New heading text";</script>'
         },
         jsInnerHTML: {
             function: 'innerHTML is a JavaScript property that gets or sets the HTML content inside an element. It allows you to add, remove, or change HTML elements dynamically. This is powerful but must be used carefully for security.',
@@ -370,7 +362,7 @@ heading.textContent = 'New heading text';`,
             ],
             tryItExample: `const div = document.querySelector('div');
 div.innerHTML = '<p>This is <strong>new content</strong></p>';`,
-            hasVisualOutput: false
+            tryItHtml: '<div id="demo" style="padding: 20px; background-color: #ecf0f1; border-radius: 8px;"></div><script>document.getElementById("demo").innerHTML = "<p>This is <strong>new content</strong></p>";</script>'
         },
         jsTextContent: {
             function: 'textContent is a JavaScript property that gets or sets the text content of an element. Unlike innerHTML, it treats the input as plain text, not HTML. This makes it safer for user input.',
@@ -383,7 +375,7 @@ div.innerHTML = '<p>This is <strong>new content</strong></p>';`,
             ],
             tryItExample: `const paragraph = document.querySelector('p');
 paragraph.textContent = 'This is new text content';`,
-            hasVisualOutput: false
+            tryItHtml: '<p id="demo" style="font-size: 16px;">Original text</p><script>document.getElementById("demo").textContent = "This is new text content";</script>'
         },
         jsIfStatement: {
             function: 'An if statement in JavaScript checks if a condition is true, and if so, executes a block of code. You can also use else or else if for additional conditions. This is fundamental to controlling program flow.',
@@ -401,7 +393,7 @@ if (age >= 18) {
 } else {
     console.log('You are a minor');
 }`,
-            hasVisualOutput: false
+            tryItHtml: '<div id="demo" style="padding: 20px; background-color: #ecf0f1; border-radius: 8px;"></div><script>const age = 18; const result = age >= 18 ? "You are an adult" : "You are a minor"; document.getElementById("demo").textContent = result;</script>'
         },
         jsVariable: {
             function: 'Variables in JavaScript store data values. You can declare variables using const, let, or var. const and let are preferred in modern JavaScript. Variables can hold strings, numbers, objects, arrays, and more.',
@@ -417,7 +409,7 @@ if (age >= 18) {
 const age = 30;
 const city = 'New York';
 console.log(name, age, city);`,
-            hasVisualOutput: false
+            tryItHtml: '<div id="demo" style="padding: 20px; background-color: #ecf0f1; border-radius: 8px;"></div><script>const name = "John"; const age = 30; const city = "New York"; document.getElementById("demo").textContent = `Name: ${name}, Age: ${age}, City: ${city}`;</script>'
         },
 
         // ===== JSON =====
@@ -434,9 +426,10 @@ console.log(name, age, city);`,
             tryItExample: `{
   "name": "John",
   "age": 30,
-  "city": "New York"
+  "city": "New York",
+  "hobbies": ["reading", "gaming", "coding"]
 }`,
-            hasVisualOutput: false
+            tryItHtml: '<pre style="background-color: #ecf0f1; padding: 20px; border-radius: 8px; overflow-x: auto;">{\n  "name": "John",\n  "age": 30,\n  "city": "New York"\n}</pre>'
         },
 
         // ===== FETCH/API =====
@@ -454,7 +447,7 @@ console.log(name, age, city);`,
   .then(response => response.json())
   .then(data => console.log(data))
   .catch(error => console.log('Error:', error));`,
-            hasVisualOutput: false
+            tryItHtml: '<div style="padding: 20px; background-color: #ecf0f1; border-radius: 8px;"><p>Fetching data from server...</p><p style="margin-top: 10px; color: #666;">Check the browser console for the result</p></div>'
         },
 
         // ===== GENERIC PATTERNS =====
@@ -467,11 +460,12 @@ console.log(name, age, city);`,
                 'Multiple properties are separated by semicolons (;).',
                 'Styles cascade - more specific selectors override general ones.'
             ],
-            tryItExample: `body {
-    background-color: #ecf0f1;
-    color: #333;
+            tryItExample: `/* Example CSS styling */
+element {
+    property: value;
+    property: value;
 }`,
-            hasVisualOutput: true
+            tryItHtml: '<div style="padding: 20px; background-color: #ecf0f1; border-radius: 8px;"><p>CSS styling applied to HTML elements</p></div>'
         },
         genericHTML: {
             function: 'This is HTML (Hypertext Markup Language) code that defines the structure and content of a web page. HTML elements are the building blocks of all websites.',
@@ -486,7 +480,7 @@ console.log(name, age, city);`,
     <h1>Title</h1>
     <p>Content goes here</p>
 </div>`,
-            hasVisualOutput: true
+            tryItHtml: '<div style="padding: 20px; background-color: #ecf0f1; border-radius: 8px;"><h1 style="font-size: 20px; margin: 0 0 10px 0;">Title</h1><p>Content goes here</p></div>'
         },
         genericJavaScript: {
             function: 'This is JavaScript code that adds interactivity and dynamic behavior to web pages. JavaScript runs in the browser and can respond to user actions, modify HTML, and communicate with servers.',
@@ -497,8 +491,11 @@ console.log(name, age, city);`,
                 'JavaScript can modify HTML and CSS dynamically.',
                 'Always handle errors gracefully in your JavaScript code.'
             ],
-            tryItExample: `console.log('Hello World');`,
-            hasVisualOutput: false
+            tryItExample: `// JavaScript code example
+console.log('Hello World');
+const element = document.querySelector('element');
+element.style.color = 'red';`,
+            tryItHtml: '<div style="padding: 20px; background-color: #ecf0f1; border-radius: 8px;"><p>JavaScript is running. Check browser console for output.</p></div>'
         }
     },
     es: {
@@ -512,10 +509,13 @@ console.log(name, age, city);`,
                 'Puedes usar nombres de colores (red, blue), códigos hexadecimales (#FF5733) o valores RGB.',
                 'La propiedad background-color es heredada por elementos secundarios a menos que se anule.'
             ],
-            tryItExample: `body {
-    background-color: yellow;
+            tryItExample: `div {
+    background-color: #3498db;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
 }`,
-            hasVisualOutput: true
+            tryItHtml: '<div style="background-color: #3498db; color: white; padding: 20px; border-radius: 8px;">¡Hola Mundo!</div>'
         },
         cssColor: {
             function: 'La propiedad color en CSS establece el color del texto de un elemento. Se aplica a todo el contenido de texto dentro del elemento y sus elementos secundarios a menos que se anule.',
@@ -526,14 +526,11 @@ console.log(name, age, city);`,
                 'La propiedad color es heredada por elementos secundarios.',
                 'Usa el color para resaltar texto importante o crear jerarquía visual.'
             ],
-            tryItExample: `body {
+            tryItExample: `p {
     color: #e74c3c;
-}
-
-p {
     font-size: 16px;
 }`,
-            hasVisualOutput: true
+            tryItHtml: '<p style="color: #e74c3c; font-size: 16px;">¡Este texto es rojo!</p>'
         },
         cssFontSize: {
             function: 'La propiedad font-size en CSS controla el tamaño del texto. Se puede especificar en píxeles (px), unidades em, porcentajes (%) u otras unidades CSS.',
@@ -548,7 +545,7 @@ p {
     font-size: 32px;
     font-weight: bold;
 }`,
-            hasVisualOutput: true
+            tryItHtml: '<h1 style="font-size: 32px; font-weight: bold;">Este es un título grande</h1>'
         },
         cssTextWrap: {
             function: 'La propiedad text-wrap en CSS controla cómo se ajusta el texto dentro de su contenedor. Determina si el texto debe romper a la siguiente línea o mantenerse en una sola línea.',
@@ -565,7 +562,7 @@ p {
     border: 1px solid #ccc;
     padding: 10px;
 }`,
-            hasVisualOutput: true
+            tryItHtml: '<p style="text-wrap: wrap; width: 300px; border: 1px solid #ccc; padding: 10px;">Este es una línea larga de texto que se ajustará dentro del contenedor en múltiples líneas según sea necesario.</p>'
         },
         cssPadding: {
             function: 'La propiedad padding en CSS crea espacio dentro de un elemento, entre el contenido y el borde. Añade espaciado interno para empujar el contenido lejos de los bordes del elemento.',
@@ -582,7 +579,7 @@ p {
     border: 1px solid #3498db;
     border-radius: 8px;
 }`,
-            hasVisualOutput: true
+            tryItHtml: '<div style="padding: 20px; background-color: #e8f4f8; border: 1px solid #3498db; border-radius: 8px;">Este contenido tiene relleno dentro de la caja</div>'
         },
         cssMargin: {
             function: 'La propiedad margin en CSS crea espacio fuera de un elemento, alrededor de su borde. Añade espaciado externo entre el elemento y otros elementos o el borde de la página.',
@@ -590,7 +587,7 @@ p {
             tips: [
                 'margin: 10px - Todos los lados obtienen 10px de margen.',
                 'margin: 10px 20px - Arriba/abajo 10px, izquierda/derecha 20px.',
-                'margin: 10px 20px 15px 5px - Arriba, derecha, abajo, izquierda.',
+                'margin: auto - Centra el elemento horizontalmente.',
                 'El margen puede ser negativo para superponer elementos.'
             ],
             tryItExample: `div {
@@ -599,7 +596,7 @@ p {
     background-color: #f0f0f0;
     border: 2px solid #333;
 }`,
-            hasVisualOutput: true
+            tryItHtml: '<div style="margin: 20px; padding: 20px; background-color: #f0f0f0; border: 2px solid #333;">Esta caja tiene espaciado externo (margen)</div>'
         },
         cssDisplay: {
             function: 'La propiedad display en CSS controla cómo se representa un elemento en la página. Los valores comunes son block, inline, inline-block, flex, grid y none.',
@@ -620,7 +617,7 @@ p {
     background-color: #3498db;
     color: white;
 }`,
-            hasVisualOutput: true
+            tryItHtml: '<div style="display: flex; justify-content: center; align-items: center; height: 200px; background-color: #3498db; color: white;">Contenido centrado usando flexbox</div>'
         },
         cssBorderRadius: {
             function: 'La propiedad border-radius en CSS redondea las esquinas del borde de un elemento. Puede crear esquinas ligeramente redondeadas o formas completamente circulares dependiendo de los valores utilizados.',
@@ -638,7 +635,7 @@ p {
     color: white;
     text-align: center;
 }`,
-            hasVisualOutput: true
+            tryItHtml: '<div style="border-radius: 12px; padding: 20px; background-color: #9b59b6; color: white; text-align: center;">Esta caja tiene esquinas redondeadas</div>'
         },
         cssOpacity: {
             function: 'La propiedad opacity en CSS controla la transparencia de un elemento. Los valores van de 0 (completamente transparente/invisible) a 1 (completamente opaco/visible).',
@@ -655,7 +652,7 @@ p {
     background-color: #e74c3c;
     color: white;
 }`,
-            hasVisualOutput: true
+            tryItHtml: '<div style="opacity: 0.7; padding: 20px; background-color: #e74c3c; color: white;">Este elemento es 70% opaco (30% transparente)</div>'
         },
         cssWidth: {
             function: 'La propiedad width en CSS establece el ancho de un elemento. Se puede especificar en píxeles (px), porcentajes (%), unidades em u otras unidades CSS.',
@@ -673,7 +670,7 @@ p {
     color: white;
     margin: 0 auto;
 }`,
-            hasVisualOutput: true
+            tryItHtml: '<div style="width: 80%; padding: 20px; background-color: #2ecc71; color: white; margin: 0 auto;">Este elemento es el 80% del ancho del contenedor</div>'
         },
         cssHeight: {
             function: 'La propiedad height en CSS establece la altura de un elemento. Se puede especificar en píxeles (px), porcentajes (%), unidades em u otras unidades CSS.',
@@ -692,7 +689,7 @@ p {
     display: flex;
     align-items: center;
 }`,
-            hasVisualOutput: true
+            tryItHtml: '<div style="height: 150px; padding: 20px; background-color: #f39c12; color: white; display: flex; align-items: center;">Este elemento tiene una altura fija</div>'
         },
 
         // ===== HTML (SPANISH) =====
@@ -705,8 +702,8 @@ p {
                 'Personaliza los botones con CSS para que coincidan con tu diseño.',
                 'Asegúrate de que los botones sean fáciles de hacer clic en dispositivos móviles.'
             ],
-            tryItExample: `<button>Click Me</button>`,
-            hasVisualOutput: true
+            tryItExample: `<button onclick="alert('¡Botón clicked!')">Haz clic en mí</button>`,
+            tryItHtml: '<button style="padding: 10px 20px; background-color: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;" onclick="alert(\'¡Botón clicked!\')">Haz clic en mí</button>'
         },
         htmlDiv: {
             function: 'El elemento <div> es un contenedor utilizado para agrupar otros elementos HTML. No tiene un significado semántico especial y se utiliza para propósitos de diseño y estilo.',
@@ -720,7 +717,7 @@ p {
             tryItExample: `<div style="background-color: #ecf0f1; padding: 20px; border-radius: 8px;">
     <p>Este es contenido dentro de un div</p>
 </div>`,
-            hasVisualOutput: true
+            tryItHtml: '<div style="background-color: #ecf0f1; padding: 20px; border-radius: 8px;"><p>Este es contenido dentro de un div</p></div>'
         },
         htmlParagraph: {
             function: 'El elemento <p> define un párrafo de texto. Se utiliza para agrupar oraciones relacionadas y es uno de los elementos HTML más básicos.',
@@ -732,7 +729,7 @@ p {
                 'Estiliza párrafos con CSS para una apariencia de texto consistente.'
             ],
             tryItExample: `<p>Este es un párrafo de texto. Contiene información relacionada y se muestra como un elemento de bloque con espaciado arriba y abajo.</p>`,
-            hasVisualOutput: true
+            tryItHtml: '<p style="font-size: 16px; line-height: 1.6;">Este es un párrafo de texto. Contiene información relacionada y se muestra como un elemento de bloque con espaciado arriba y abajo.</p>'
         },
         htmlHeading: {
             function: 'Los elementos de encabezado HTML (<h1> a <h6>) se utilizan para definir encabezados y subencabezados en una página. <h1> es el más grande e importante, mientras que <h6> es el más pequeño.',
@@ -743,10 +740,10 @@ p {
                 'Los encabezados mejoran el SEO y la accesibilidad.',
                 'No saltes niveles de encabezado (por ejemplo, no vayas de h1 directamente a h3).'
             ],
-            tryItExample: `<h1>Main Heading</h1>
-<h2>Subheading</h2>
-<h3>Sub-subheading</h3>`,
-            hasVisualOutput: true
+            tryItExample: `<h1>Encabezado Principal</h1>
+<h2>Subencabezado</h2>
+<h3>Sub-subencabezado</h3>`,
+            tryItHtml: '<div><h1 style="font-size: 28px; margin: 10px 0;">Encabezado Principal</h1><h2 style="font-size: 22px; margin: 10px 0;">Subencabezado</h2><h3 style="font-size: 18px; margin: 10px 0;">Sub-subencabezado</h3></div>'
         },
 
         // ===== JAVASCRIPT (SPANISH) =====
@@ -764,7 +761,7 @@ p {
 button.addEventListener('click', function() {
     alert('¡Hiciste clic en el botón!');
 });`,
-            hasVisualOutput: false
+            tryItHtml: '<button style="padding: 10px 20px; background-color: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer;" onclick="alert(\'¡Hiciste clic en el botón!\')">Haz clic para ver el evento</button>'
         },
         jsQuerySelector: {
             function: 'document.querySelector() es un método de JavaScript que encuentra y devuelve el primer elemento en el DOM que coincide con un selector CSS especificado.',
@@ -778,7 +775,7 @@ button.addEventListener('click', function() {
             ],
             tryItExample: `const heading = document.querySelector('h1');
 heading.textContent = 'Nuevo texto de encabezado';`,
-            hasVisualOutput: false
+            tryItHtml: '<h1 id="demo">Texto original</h1><script>document.querySelector("h1").textContent = "Nuevo texto de encabezado";</script>'
         },
         jsInnerHTML: {
             function: 'innerHTML es una propiedad de JavaScript que obtiene o establece el contenido HTML dentro de un elemento. Te permite agregar, eliminar o cambiar elementos HTML dinámicamente.',
@@ -792,7 +789,7 @@ heading.textContent = 'Nuevo texto de encabezado';`,
             ],
             tryItExample: `const div = document.querySelector('div');
 div.innerHTML = '<p>Este es el <strong>nuevo contenido</strong></p>';`,
-            hasVisualOutput: false
+            tryItHtml: '<div id="demo" style="padding: 20px; background-color: #ecf0f1; border-radius: 8px;"></div><script>document.getElementById("demo").innerHTML = "<p>Este es el <strong>nuevo contenido</strong></p>";</script>'
         },
         jsTextContent: {
             function: 'textContent es una propiedad de JavaScript que obtiene o establece el contenido de texto de un elemento. A diferencia de innerHTML, trata la entrada como texto plano, no HTML.',
@@ -805,7 +802,7 @@ div.innerHTML = '<p>Este es el <strong>nuevo contenido</strong></p>';`,
             ],
             tryItExample: `const paragraph = document.querySelector('p');
 paragraph.textContent = 'Este es nuevo contenido de texto';`,
-            hasVisualOutput: false
+            tryItHtml: '<p id="demo" style="font-size: 16px;">Texto original</p><script>document.getElementById("demo").textContent = "Este es nuevo contenido de texto";</script>'
         },
         jsIfStatement: {
             function: 'Una sentencia if en JavaScript verifica si una condición es verdadera y, si es así, ejecuta un bloque de código. También puedes usar else o else if para condiciones adicionales.',
@@ -823,7 +820,7 @@ if (age >= 18) {
 } else {
     console.log('Eres menor de edad');
 }`,
-            hasVisualOutput: false
+            tryItHtml: '<div id="demo" style="padding: 20px; background-color: #ecf0f1; border-radius: 8px;"></div><script>const age = 18; const result = age >= 18 ? "Eres mayor de edad" : "Eres menor de edad"; document.getElementById("demo").textContent = result;</script>'
         },
         jsVariable: {
             function: 'Las variables en JavaScript almacenan valores de datos. Puedes declarar variables usando const, let o var. const y let son preferidas en JavaScript moderno.',
@@ -839,7 +836,7 @@ if (age >= 18) {
 const age = 30;
 const city = 'Nueva York';
 console.log(name, age, city);`,
-            hasVisualOutput: false
+            tryItHtml: '<div id="demo" style="padding: 20px; background-color: #ecf0f1; border-radius: 8px;"></div><script>const name = "Juan"; const age = 30; const city = "Nueva York"; document.getElementById("demo").textContent = `Nombre: ${name}, Edad: ${age}, Ciudad: ${city}`;</script>'
         },
 
         // ===== JSON (SPANISH) =====
@@ -856,9 +853,10 @@ console.log(name, age, city);`,
             tryItExample: `{
   "nombre": "Juan",
   "edad": 30,
-  "ciudad": "Nueva York"
+  "ciudad": "Nueva York",
+  "hobbies": ["lectura", "juegos", "codificación"]
 }`,
-            hasVisualOutput: false
+            tryItHtml: '<pre style="background-color: #ecf0f1; padding: 20px; border-radius: 8px; overflow-x: auto;">{\n  "nombre": "Juan",\n  "edad": 30,\n  "ciudad": "Nueva York"\n}</pre>'
         },
 
         // ===== FETCH/API (SPANISH) =====
@@ -876,7 +874,7 @@ console.log(name, age, city);`,
   .then(response => response.json())
   .then(data => console.log(data))
   .catch(error => console.log('Error:', error));`,
-            hasVisualOutput: false
+            tryItHtml: '<div style="padding: 20px; background-color: #ecf0f1; border-radius: 8px;"><p>Obteniendo datos del servidor...</p><p style="margin-top: 10px; color: #666;">Verifica la consola del navegador para el resultado</p></div>'
         },
 
         // ===== GENERIC (SPANISH) =====
@@ -889,11 +887,12 @@ console.log(name, age, city);`,
                 'Múltiples propiedades están separadas por punto y coma (;).',
                 'Los estilos se aplican en cascada - los selectores más específicos anulan los generales.'
             ],
-            tryItExample: `body {
-    background-color: #ecf0f1;
-    color: #333;
+            tryItExample: `/* Ejemplo de estilo CSS */
+element {
+    property: value;
+    property: value;
 }`,
-            hasVisualOutput: true
+            tryItHtml: '<div style="padding: 20px; background-color: #ecf0f1; border-radius: 8px;"><p>Estilo CSS aplicado a elementos HTML</p></div>'
         },
         genericHTML: {
             function: 'Este es código HTML (Lenguaje de Marcas de Hipertexto) que define la estructura y contenido de una página web. Los elementos HTML son los bloques de construcción de todos los sitios web.',
@@ -905,10 +904,10 @@ console.log(name, age, city);`,
                 'Combina HTML con CSS para estilizar y JavaScript para interactividad.'
             ],
             tryItExample: `<div>
-    <h1>Title</h1>
-    <p>Content goes here</p>
+    <h1>Título</h1>
+    <p>El contenido va aquí</p>
 </div>`,
-            hasVisualOutput: true
+            tryItHtml: '<div style="padding: 20px; background-color: #ecf0f1; border-radius: 8px;"><h1 style="font-size: 20px; margin: 0 0 10px 0;">Título</h1><p>El contenido va aquí</p></div>'
         },
         genericJavaScript: {
             function: 'Este es código JavaScript que agrega interactividad y comportamiento dinámico a páginas web. JavaScript se ejecuta en el navegador y puede responder a acciones del usuario y modificar HTML.',
@@ -919,8 +918,11 @@ console.log(name, age, city);`,
                 'JavaScript puede modificar HTML y CSS dinámicamente.',
                 'Siempre maneja errores correctamente en tu código JavaScript.'
             ],
-            tryItExample: `console.log('Hello World');`,
-            hasVisualOutput: false
+            tryItExample: `// Ejemplo de código JavaScript
+console.log('Hola Mundo');
+const element = document.querySelector('element');
+element.style.color = 'red';`,
+            tryItHtml: '<div style="padding: 20px; background-color: #ecf0f1; border-radius: 8px;"><p>JavaScript se está ejecutando. Verifica la consola del navegador para ver la salida.</p></div>'
         }
     }
 };
@@ -928,7 +930,6 @@ console.log(name, age, city);`,
 // ==================== STATE MANAGEMENT ====================
 let currentLanguage = 'en';
 let lastAnalyzedCode = '';
-let currentAnalysis = null;
 
 // ==================== INITIALIZATION ====================
 document.addEventListener('DOMContentLoaded', function() {
@@ -956,9 +957,9 @@ function initializeEventListeners() {
         option.addEventListener('click', changeLanguage);
     });
     
-    // Code editor interaction - IMPORTANT: This must update ONLY the visual result
+    // Code editor interaction
     const editableCode = document.getElementById('editableCode');
-    editableCode.addEventListener('input', debounce(updateVisualResultFromEditor, 300));
+    editableCode.addEventListener('input', debounce(updateVisualResult, 500));
     
     // Sync code between input fields
     const codeInput = document.getElementById('codeInput');
@@ -1072,9 +1073,6 @@ function analyzeCode(code) {
     const codeType = detectCodeType(code);
     const analysis = generateAnalysis(code, codeType);
     
-    // Store the analysis so we can reference it later
-    currentAnalysis = analysis;
-    
     displayResults(analysis);
     transitionToResults();
 }
@@ -1149,7 +1147,7 @@ function generateAnalysis(code, codeType) {
         whatHappened: t.noCodeDetected,
         tips: [],
         tryItExample: code,
-        hasVisualOutput: false
+        tryItHtml: '<p>Content will be displayed here</p>'
     };
     
     // ===== DETECT SPECIFIC CSS PROPERTIES =====
@@ -1246,52 +1244,27 @@ function displayResults(analysis) {
         });
     }
     
-    // Set editable code to the example provided
+    // Set editable code
     document.getElementById('editableCode').value = analysis.tryItExample;
     
-    // Update visual result with the default example
-    updateVisualResultFromEditor();
+    // Update visual result
+    renderVisualResult(analysis.tryItExample, analysis.tryItHtml);
 }
 
 /**
- * Update visual result when the user edits code in the "Try it Yourself" box
- * This function is called when the user types in the editable code area
+ * Render the visual result in an iframe
+ * @param {string} code - The editable code
+ * @param {string} htmlContent - The HTML content to display
  */
-function updateVisualResultFromEditor() {
-    const editableCode = document.getElementById('editableCode').value;
-    const hasVisualOutput = currentAnalysis ? currentAnalysis.hasVisualOutput : false;
-    
-    if (!hasVisualOutput) {
-        // If this code type doesn't produce visual output, show explanatory message
-        renderNoVisualOutput();
-        return;
-    }
-    
-    // Render the visual result based on the editable code
-    renderVisualResultFromCode(editableCode);
-}
-
-/**
- * Render visual result from user-edited code
- * @param {string} code - The code from the editor
- */
-function renderVisualResultFromCode(code) {
+function renderVisualResult(code, htmlContent) {
     const iframe = document.getElementById('visualResult');
     
     try {
-        // Detect if code is CSS or JavaScript or HTML
+        // Determine if code is CSS or JavaScript
         const isCSS = code.includes(':') && code.includes(';') && code.includes('{');
-        const isHTML = code.includes('<') && code.includes('>');
         const isJS = code.includes('function') || code.includes('=>') || code.includes('addEventListener') || code.includes('querySelector');
         
-        let htmlContent = '<p>Hello World!</p>';
-        
-        // If the code contains HTML, use it directly
-        if (isHTML) {
-            htmlContent = code;
-        }
-        
-        // Build the complete HTML document
+        // Build complete HTML document
         let fullHtml = `
             <!DOCTYPE html>
             <html>
@@ -1325,95 +1298,45 @@ function renderVisualResultFromCode(code) {
         iframe.srcdoc = fullHtml;
     } catch (error) {
         console.error('Error rendering visual result:', error);
-        renderErrorInIframe('Error rendering code');
     }
 }
 
 /**
- * Render a message when code has no visual output
+ * Update visual result when editable code changes
  */
-function renderNoVisualOutput() {
-    const iframe = document.getElementById('visualResult');
-    const t = translations[currentLanguage];
+function updateVisualResult() {
+    const editableCode = document.getElementById('editableCode').value;
     
-    const htmlContent = `
-        <!DOCTYPE html>
-        <html>
-        <head>
-            <meta charset="UTF-8">
-            <style>
-                body {
-                    margin: 20px;
-                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-                    background-color: #f5f5f5;
-                    color: #666;
-                }
-                .message-box {
-                    background-color: #e8f4f8;
-                    border: 1px solid #3498db;
-                    border-radius: 8px;
-                    padding: 20px;
-                    max-width: 500px;
-                    margin: 20px auto;
-                }
-                .message-box h3 {
-                    color: #3498db;
-                    margin-top: 0;
-                }
-                .message-box p {
-                    line-height: 1.6;
-                    color: #555;
-                }
-            </style>
-        </head>
-        <body>
-            <div class="message-box">
-                <h3>ℹ️ No Visual Output</h3>
-                <p>${t.noVisualOutput}</p>
-            </div>
-        </body>
-        </html>
-    `;
-    
-    iframe.srcdoc = htmlContent;
-}
-
-/**
- * Render an error message in the iframe
- * @param {string} errorMessage - The error message to display
- */
-function renderErrorInIframe(errorMessage) {
-    const iframe = document.getElementById('visualResult');
-    
-    const htmlContent = `
-        <!DOCTYPE html>
-        <html>
-        <head>
-            <meta charset="UTF-8">
-            <style>
-                body {
-                    margin: 20px;
-                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-                    background-color: #f5f5f5;
-                }
-                .error-box {
-                    background-color: #ffe8e8;
-                    border: 1px solid #ff6b6b;
-                    border-radius: 8px;
-                    padding: 20px;
-                    color: #c92a2a;
-                }
-            </style>
-        </head>
-        <body>
-            <div class="error-box">
-                <strong>Error:</strong> ${errorMessage}
-            </div>
-        </body>
-        </html>
-    `;
-    
-    iframe.srcdoc = htmlContent;
+    try {
+        const isCSS = editableCode.includes(':') && editableCode.includes(';') && editableCode.includes('{');
+        
+        const fullHtml = `
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <meta charset="UTF-8">
+                <style>
+                    body {
+                        margin: 20px;
+                        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+                        background-color: #f5f5f5;
+                    }
+                    ${isCSS ? editableCode : ''}
+                </style>
+            </head>
+            <body>
+                <div>Hello World!</div>
+                <script>
+                    ${editableCode.includes('addEventListener') ? editableCode : ''}
+                </script>
+            </body>
+            </html>
+        `;
+        
+        document.getElementById('visualResult').srcdoc = fullHtml;
+    } catch (error) {
+        console.error('Error updating visual result:', error);
+    }
 }
 
 /**
